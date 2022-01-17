@@ -1,0 +1,6 @@
+discord
+python-dotenv
+PyNaCl
+youtube-dl
+asyncio
+beautifulsoup4
