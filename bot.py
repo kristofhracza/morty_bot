@@ -62,6 +62,7 @@ bot.remove_command("help")
 @bot.event
 async def on_ready():
     os.system("cls||clear")
+    await bot.change_presence(activity=discord. Activity(type=discord.ActivityType.listening, name='$help'))
     for guild in bot.guilds:
         print(f"{bot.user.name} is active in {guild.name}")
 
