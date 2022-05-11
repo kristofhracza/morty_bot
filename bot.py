@@ -7,7 +7,6 @@ import youtube_dl
 ###
 import yt
 import nsfw
-import gifs
 ###
 from unicodedata import name
 from dotenv import load_dotenv
