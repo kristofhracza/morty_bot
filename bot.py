@@ -71,7 +71,7 @@ async def on_ready():
 async def test(ctx):
     desc = """
     **Music**
-     `play`,`pause`,`resume`,`stop`,`leave`
+     `play`,`pause`,`resume`,`stop / skip`,`leave`
 
      `$play [url to yt video]`
      `$play [keywords]`
