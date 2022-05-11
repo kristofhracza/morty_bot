@@ -77,7 +77,7 @@ async def test(ctx):
      `$play [keywords]`
 
     **General / fun**
-    `pee-pee`,
+        `pee-pee`,
 
     **NSFW**
      `nsfw`
