@@ -9,7 +9,9 @@ from bs4 import BeautifulSoup
 URL = "http://porngipfy.com/"
 URLS = ["http://porngipfy.com/category/lesbian","http://porngipfy.com/?s=ass",
 "http://porngipfy.com/category/boobs","http://porngipfy.com/category/anal",
-"http://porngipfy.com/tag/butthole","http://porngipfy.com/tag/hardcore/"
+"http://porngipfy.com/tag/butthole","http://porngipfy.com/tag/hardcore/","http://porngipfy.com/",
+"http://porngipfy.com/tag/black/","http://porngipfy.com/tag/sex/","http://porngipfy.com/tag/cumshot/",
+"http://porngipfy.com/tag/cumshot/"
 ]
 
 def get_porn():
