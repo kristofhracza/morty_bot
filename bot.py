@@ -168,23 +168,17 @@ async def resume(ctx):
         await(ctx.send(embed=make_embed("No music","I am not playing any music at the moment",discord.Color.red())))
         Log("RESUME",ctx.guild,ctx.message.author.name,"N/A",time.ctime()).error()
 
-# Stop audio
-@bot.command(name="stop")
+# Stop / Skip audio
+@bot.command(name="skip", aliases=["stop"])
 async def resume(ctx):
     try:
         ctx.voice_client.stop()
         emoji = '\N{THUMBS UP SIGN}'
         await ctx.message.add_reaction(emoji)
-        Log("STOP",ctx.guild,ctx.message.author.name,"N/A",time.ctime()).action()
+        Log("SKIP",ctx.guild,ctx.message.author.name,"N/A",time.ctime()).action()
     except:
         await(ctx.send(embed=make_embed("No music","I am not playing any music at the moment",discord.Color.red())))
-        Log("STOP",ctx.guild,ctx.message.author.name,"N/A",time.ctime()).error()
-
-# Ping
-@bot.command(name="ping")
-async def ping(ctx):
-    await(ctx.send(embed=make_embed("Ping",f"{round(bot.latency, 1)}ms",discord.Color.green())))
-    Log("PING",ctx.guild,ctx.message.author.name,"N/A",time.ctime()).action()
+        Log("SKIP",ctx.guild,ctx.message.author.name,"N/A",time.ctime()).error()
 
 # Pepe meter
 @bot.command(name="pee-pee")
@@ -204,23 +198,6 @@ async def ass(ctx):
     embed.set_image(url=link)
     await ctx.send(embed=embed) 
     Log("NSFW",ctx.guild,ctx.message.author.name,"N/A",time.ctime()).action()
-
-# Gifs (tenor)
-@bot.command(name="gif")
-async def gif(ctx,*args):
-    # Get the all the words
-    q = ""
-    for i in args:
-        i = f"{i} "
-        q += i
-    # Send embed
-    link = gifs.get_gif(q)
-    embed = discord.Embed(
-    color=discord.Color.orange()
-    )
-    embed.set_image(url=link)
-    await ctx.send(embed=embed) 
-    Log("GIF",ctx.guild,ctx.message.author.name,"N/A",time.ctime()).action()
 
 if __name__ == "__main__":
     bot.run(TOKEN)

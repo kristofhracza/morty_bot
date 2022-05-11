@@ -6,15 +6,13 @@ professional intention with it.
 # Usage:
 ```
  **Music**
-    `play`,`pause`,`resume`,`stop`,`leave`
+    `play`,`pause`,`resume`,`stop / skip`,`leave`
 
    `$play [url to yt video]`
    `$play [keywords]`
 
   **General / fun**
-     `ping`,`pee-pee`,`gif`
-
-   `$gif [keyword(s)]`
+   `pee-pee`
 
   **NSFW**
      `nsfw`
