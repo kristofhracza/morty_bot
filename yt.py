@@ -1,7 +1,9 @@
-# Script to take audio from yt url
-# Big thanks to Rapptz
-# https://github.com/Rapptz/discord.py/blob/45d498c1b76deaf3b394d17ccf56112fa691d160/examples/basic_voice.py
+"""
+Script to take audio from yt url
+Big thanks to Rapptz
+https://github.com/Rapptz/discord.py/blob/45d498c1b76deaf3b394d17ccf56112fa691d160/examples/basic_voice.py
 
+"""
 ###############
 import os
 from dotenv import load_dotenv

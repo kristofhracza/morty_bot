@@ -1,16 +1,17 @@
+"""
+
+Main file handling methods from other files
+and audio related options
+
+"""
+
 # Libs
-import os
-import time
-import random
-import discord
-import youtube_dl
-###
-import yt
-import nsfw
-###
+import os,time,discord,youtube_dl
 from unicodedata import name
 from dotenv import load_dotenv
 from discord.ext import commands
+# Files
+import yt,nsfw
 
 # Load env variables
 load_dotenv()

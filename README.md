@@ -22,7 +22,7 @@ professional intention with it.
 ```
 
 # Libs:
-`pip install -r requirement.txt`
+`pip install -r requirements.txt`
 
 # Execute:
 - `py bot.py`

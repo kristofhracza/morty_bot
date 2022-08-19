@@ -1,4 +1,8 @@
-# NSFW GIFS
+"""
+
+NSFW gifs for morty
+
+"""
 
 # Libs
 import requests
@@ -14,8 +18,8 @@ URLS = ["http://porngipfy.com/category/lesbian","http://porngipfy.com/?s=ass",
 "http://porngipfy.com/tag/cumshot/"
 ]
 
+# Get a random gif
 def get_porn():
-  # Get a random gif
   r_url = random.choice(URLS)
   site = requests.get(r_url,timeout=10)
   soup = BeautifulSoup(site.content, "html.parser")
