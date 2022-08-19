@@ -187,11 +187,11 @@ async def pepe(ctx):
 
 # NSFW
 @bot.command(name="nsfw")
-async def ass(ctx):
+async def porn(ctx):
     # Send embed
-    link = nsfw.get_porn()
+    link = nsfw.get_gif()
     embed = discord.Embed(
-    color=discord.Color.purple()
+    color=discord.Color.magenta()
     )
     embed.set_image(url=link)
     await ctx.send(embed=embed) 
