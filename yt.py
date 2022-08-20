@@ -4,20 +4,14 @@ Big thanks to Rapptz
 https://github.com/Rapptz/discord.py/blob/45d498c1b76deaf3b394d17ccf56112fa691d160/examples/basic_voice.py
 
 """
-###############
 import os
+import asyncio
+import discord
+import youtube_dl
 from dotenv import load_dotenv
 # Load env variables
 load_dotenv()
 FFMPEG = os.getenv('FFMPEG_PATH')
-###############
-
-import asyncio
-
-import discord
-import youtube_dl
-
-from discord.ext import commands
 
 # Suppress noise about console usage from errors
 youtube_dl.utils.bug_reports_message = lambda: ''
