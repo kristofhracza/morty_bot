@@ -6,7 +6,7 @@ and audio related options
 """
 
 # Libs
-import os,time,discord,youtube_dl
+import os,time,discord,random
 from unicodedata import name
 from dotenv import load_dotenv
 from discord.ext import commands
@@ -182,7 +182,7 @@ async def resume(ctx):
 @bot.command(name="pee-pee")
 async def pepe(ctx):
     size = random.randrange(1,25)
-    await ctx.send(embed=make_embed(f"{ctx.message.author}'s size",f"8{'='*size}D",discord.Color.magenta()))
+    await ctx.send(embed=make_embed(f"{ctx.message.author.name}'s size",f"8{'='*size}D",discord.Color.gold()))
     Log("PEE-PEE",ctx.guild,ctx.message.author.name,"N/A",time.ctime()).action()
 
 # NSFW
