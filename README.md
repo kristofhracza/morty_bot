@@ -6,7 +6,7 @@ A fun discord bot
 - play
     - Plays music from url / keyword `$play [url / keyword]`
 - skip / stop
-    - Skips current songs
+    - Skips current song
 - leave
     - Leaves vc
 - queue / q
@@ -14,7 +14,7 @@ A fun discord bot
 
 ### Fun:
 - nsfw
-    - Embeds and nsfw GIF
+    - Embeds an nsfw GIF
 - pee-pee
     - Shows size
 

@@ -44,22 +44,6 @@ async def on_ready():
 # Help command
 @bot.command(name="help")
 async def help(ctx):
-    desc = """
-    **Music**
-     `play`, `skip`,`leave`
-
-     `$play [url to yt video]`
-     `$play [keywords]`
-
-    **General / fun**
-        `pee-pee`,
-
-    **NSFW**
-     `nsfw`
-
-    **Supported platforms for music**
-      - `Youtube`
-    """
     embed = discord.Embed(title="Help menu",description="Command prefix: *$*",color=discord.Color.from_rgb(0,188,255))
     embed.add_field(name="Music",value="""```\rplay\nskip\nleave\nqueue / q\r```""")
     embed.add_field(name="Fun",value="""```\rnsfw\npee-pee\r```""")
