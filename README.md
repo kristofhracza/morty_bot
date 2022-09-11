@@ -1,25 +1,22 @@
 # Morty
-A casual discord bot
-This bot was built just for fun and I actually use it on my server, so there was no
-professional intention with it.
+A fun discord bot
 
 # Usage:
-```
- **Music**
-    `play`,`pause`,`resume`,`stop / skip`,`leave`
+### Music:
+- play
+    - Plays music from url / keyword `$play [url / keyword]`
+- skip / stop
+    - Skips current songs
+- leave
+    - Leaves vc
+- queue / q
+    - Shows music queue
 
-   `$play [url to yt video]`
-   `$play [keywords]`
-
-  **General / fun**
-   `pee-pee`
-
-  **NSFW**
-     `nsfw`
-
-  **Supported platforms**
-    - `Youtube`
-```
+### Fun:
+- nsfw
+    - Embeds and nsfw GIF
+- pee-pee
+    - Shows size
 
 # Libs:
 `pip install -r requirements.txt`

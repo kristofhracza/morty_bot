@@ -46,7 +46,7 @@ async def on_ready():
 async def help(ctx):
     desc = """
     **Music**
-     `play`, `stop / skip`,`leave`
+     `play`, `skip`,`leave`
 
      `$play [url to yt video]`
      `$play [keywords]`
@@ -60,7 +60,10 @@ async def help(ctx):
     **Supported platforms for music**
       - `Youtube`
     """
-    await(ctx.send(embed=make_embed("Help Menu",desc,discord.Color.from_rgb(*EMBED_COLORS["yellow"]))))
+    embed = discord.Embed(title="Help menu",description="Command prefix: *$*",color=discord.Color.from_rgb(0,188,255))
+    embed.add_field(name="Music",value="""```\rplay\nskip\nleave\nqueue / q\r```""")
+    embed.add_field(name="Fun",value="""```\rnsfw\npee-pee\r```""")
+    await(ctx.send(embed=embed))
 
 if __name__ == "__main__":
     asyncio.run(main())
