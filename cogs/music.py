@@ -85,6 +85,19 @@ class Music(commands.Cog):
                 inline=False)
                 await(ctx.send(embed=embed))
 
+    @commands.command(name="queue", aliases=["q"])
+    async def display_queue(self,ctx: commands.Context):
+        if len(self.queue[ctx.guild.id]) > 0:
+            print("Q")
+            embed = discord.Embed(title="Tracks in the queue",color=discord.Color.from_rgb(*EMBED_COLORS["blue"]))
+            nl = "\n"
+            embed.add_field(name="\u200b",value=f"{f' {nl} '.join(str_conv.conv(str(s[0].title)) for s in self.queue[ctx.guild.id])}",inline=False)
+            await(ctx.send(embed=embed))
+        else:
+            print("N")
+            embed = discord.Embed(title="There's nothing in the queue",color=discord.Color.from_rgb(*EMBED_COLORS["red"]))
+            await(ctx.send(embed=embed))
+
     # Stop / Skip audio
     @commands.command(name="skip", aliases=["stop"])
     async def skip(self,ctx: commands.Context):
