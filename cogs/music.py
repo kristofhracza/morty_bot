@@ -19,6 +19,7 @@ Q[i] = [[player,url]]
 
 """
 # Libs
+import helpers.str as str_conv
 from helpers.loader import *
 # Additional libs
 import yt
@@ -73,19 +74,15 @@ class Music(commands.Cog):
             try:
                 ctx.voice_client.play(player, after=lambda e: asyncio.run_coroutine_threadsafe(self.queue_handle(ctx), self.bot.loop))
                 # Send embed
-                embed = discord.Embed(title="Music player", color=discord.Color.from_rgb(*EMBED_COLORS["blue"]))
-                embed.add_field(name="Currently playing",value=player.title)
-                if not self.queue[ctx.guild.id]:
-                    embed.add_field(name="Queue",value="Queue is empty", inline=False)
-                else:
-                    nl = "\n"
-                    embed.add_field(name="Queue:", value=
-                    f"{f' {nl} '.join(f'**{self.queue[ctx.guild.id].index(s)+1}** -- ' + str(s[0].title) for s in self.queue[ctx.guild.id])}",
-                    inline=False)
+                embed = discord.Embed(title="Now playing", color=discord.Color.from_rgb(*EMBED_COLORS["blue"]),description=str_conv.conv(player.title))
                 await ctx.send(embed=embed) 
             except discord.errors.ClientException:
                 self.queue[ctx.guild.id].append([player,url])
                 embed = discord.Embed(title="Added to queue", description=player.title, color=discord.Color.from_rgb(*EMBED_COLORS["blue"]))
+                nl = "\n"
+                embed.add_field(name="Queue:", value=
+                f"{f' {nl} '.join(str_conv.conv(str(s[0].title)) for s in self.queue[ctx.guild.id])}",
+                inline=False)
                 await(ctx.send(embed=embed))
 
     # Stop / Skip audio
