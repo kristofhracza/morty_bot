@@ -22,7 +22,7 @@ Q[i] = [[player,url]]
 import helpers.str as str_conv
 from helpers.loader import *
 # Additional libs
-import yt
+import helpers.yt as yt
 
 class Music(commands.Cog):
     def __init__(self,bot):

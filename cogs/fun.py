@@ -6,7 +6,7 @@ A cog for all the fun functions
 # Libs
 from helpers.loader import *
 # Additional libs
-import nsfw,memes
+import helpers.nsfw as nsfw,helpers.memes as memes
 
 class Fun(commands.Cog):
   def __init__(self,bot):
