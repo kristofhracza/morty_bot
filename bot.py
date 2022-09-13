@@ -46,7 +46,7 @@ async def on_ready():
 async def help(ctx):
     embed = discord.Embed(title="Help menu",description="Command prefix: *$*",color=discord.Color.from_rgb(0,188,255))
     embed.add_field(name="Music",value="""```\rplay\nskip\nleave\nqueue / q\r```""")
-    embed.add_field(name="Fun",value="""```\rnsfw\npee-pee\r```""")
+    embed.add_field(name="Fun",value="""```\rnsfw\npee-pee\nmeme\r```""")
     await(ctx.send(embed=embed))
 
 if __name__ == "__main__":
