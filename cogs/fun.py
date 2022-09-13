@@ -23,7 +23,7 @@ class Fun(commands.Cog):
   # NSFW
   @commands.command(name="nsfw")
   async def nsfw(self,ctx):
-      link = nsfw.get_gif()
+      link = random.choice(nsfw.FUNCTIONS)()
       embed = discord.Embed(
       color=discord.Color.from_rgb(*EMBED_COLORS["magenta"]))
       embed.set_image(url=link)

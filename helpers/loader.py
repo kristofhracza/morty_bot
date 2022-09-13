@@ -15,7 +15,7 @@ import random,discord,time,asyncio
 # Discord
 from discord.ext import commands
 # Helpers
-import helpers.logging as logger
+import helpers.logger as logger
 from helpers.embed import make_embed
 
 # Embed colours
