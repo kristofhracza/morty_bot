@@ -7,8 +7,6 @@ A fun discord bot
     - Plays music from url / keyword `$play [url / keyword]`
 - skip / stop
     - Skips current song
-- leave
-    - Leaves vc
 - queue / q
     - Shows music queue
 
@@ -17,6 +15,8 @@ A fun discord bot
     - Embeds an nsfw GIF
 - pee-pee
     - Shows size
+- meme
+    - Gets memes from  https://www.reddit.com/r/memes/
 
 # Libs:
 `pip install -r requirements.txt`

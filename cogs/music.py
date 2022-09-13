@@ -103,11 +103,5 @@ class Music(commands.Cog):
         await ctx.voice_client.stop()
         asyncio.run_coroutine_threadsafe(self.queue_handle(ctx.guild.id), self.bot.loop)
 
-    # Leave
-    @commands.command(name="leave")
-    async def leave(self,ctx: commands.Context):
-        logger.Log("LEAVE",ctx.guild,ctx.message.author.name,time.ctime()).action()
-        await ctx.guild.voice_client.disconnect()
-
 async def setup(bot):
     await bot.add_cog(Music(bot))
