@@ -79,10 +79,6 @@ class Music(commands.Cog):
             except discord.errors.ClientException:
                 self.queue[ctx.guild.id].append([player,url])
                 embed = discord.Embed(title="Added to queue", description=player.title, color=discord.Color.from_rgb(*EMBED_COLORS["blue"]))
-                nl = "\n"
-                embed.add_field(name="Queue:", value=
-                f"{f' {nl} '.join(str_conv.conv(str(s[0].title)) for s in self.queue[ctx.guild.id])}",
-                inline=False)
                 await(ctx.send(embed=embed))
 
     @commands.command(name="queue", aliases=["q"])

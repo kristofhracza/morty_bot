@@ -31,7 +31,6 @@ def get_gif():
 
 # Get a random nsfw image from reddit
 def get_nsfw():
-    print("REDDIT")
     ALLOWED = [".jpg",".png",".gif"]
     site = requests.get(REDDIT_URL,timeout=100,headers=HEADERS)
     data = json.loads(site.text)
