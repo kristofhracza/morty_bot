@@ -15,10 +15,7 @@ from bs4 import BeautifulSoup
 
 # Vars
 URL = "https://porngifs.xxx/"
-REDDIT_URLS = ["https://www.reddit.com/r/nsfw/new.json",
-"https://www.reddit.com/r/sexygirls/new.json","https://www.reddit.com/r/Nudes/new.json"
-"https://www.reddit.com/r/Gonewild18/new.json","https://www.reddit.com/r/camwhores/new.json"
-"https://www.reddit.com/r/gonewild/new.json"]
+REDDIT_URL = "https://www.reddit.com/r/nsfw/new.json"
 HEADERS = {"User-Agent":"Mozilla/5.0"}
 
 
@@ -34,20 +31,16 @@ def get_gif():
 
 # Get a random nsfw image from reddit
 def get_nsfw():
+    print("REDDIT")
     ALLOWED = [".jpg",".png",".gif"]
-    site = requests.get(random.choice(REDDIT_URLS),timeout=100,headers=HEADERS)
-    print(site.headers)
-    # Status check
+    site = requests.get(REDDIT_URL,timeout=100,headers=HEADERS)
     data = json.loads(site.text)
     post = random.choice(data["data"]["children"])
     # Error handling
-    try:
-        image = post["data"]["url_overridden_by_dest"]
-        if image[-4:] not in ALLOWED:
-            return get_nsfw()
-        else:
-            return image
-    except:
+    image = post["data"]["url_overridden_by_dest"]
+    if image[-4:] not in ALLOWED:
         return get_nsfw()
+    else:
+        return image
 
 FUNCTIONS = [get_gif,get_nsfw]
