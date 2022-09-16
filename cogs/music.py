@@ -41,19 +41,23 @@ class Music(commands.Cog):
         if not self.queue[ctx.guild.id]:
             pass
         else:
-            coro = self.play(ctx,self.queue[ctx.guild.id][0])
+            coro = self.play(ctx,self.queue[ctx.guild.id][0],queue_handle=True)
             to_run = asyncio.run_coroutine_threadsafe(coro, self.bot.loop)
             try:
                 to_run.result()
                 if self.queue[ctx.guild.id][0]:
                     self.queue[ctx.guild.id].pop(0)
             except Exception as e:
-                print(e)
+                logger.Log("PLAY QUEUE",ctx.guild,ctx.message.author.name,time.ctime()).error_message(e)
+
 
     # Playing music
     @commands.command(name="play")
-    async def play(self,ctx: commands.Context,*args):
-        logger.Log("PLAY",ctx.guild,ctx.message.author.name,time.ctime()).action()
+    async def play(self,ctx: commands.Context,*args,**kwargs):
+        if kwargs and kwargs["queue_handle"] == True:
+            logger.Log("PLAY QUEUE",ctx.guild,ctx.message.author.name,time.ctime()).action()
+        else:
+            logger.Log("PLAY",ctx.guild,ctx.message.author.name,time.ctime()).action()
         # Key words or url
         if type(args[0]) == str:
             url = " ".join(str(i) for i in args)
@@ -93,6 +97,7 @@ class Music(commands.Cog):
         else:
             embed = discord.Embed(title="There's nothing in the queue",color=discord.Color.from_rgb(*EMBED_COLORS["red"]))
             await(ctx.send(embed=embed))
+        logger.Log("QUEUE",ctx.guild,ctx.message.author.name,time.ctime()).action()
 
     # Stop / Skip audio
     @commands.command(name="skip", aliases=["stop"])
@@ -100,12 +105,14 @@ class Music(commands.Cog):
         logger.Log("SKIP",ctx.guild,ctx.message.author.name,time.ctime()).action()
         await ctx.guild.voice_client.stop()
         asyncio.run_coroutine_threadsafe(self.queue_handle(ctx.guild.id), self.bot.loop)
+        logger.Log("SKIP",ctx.guild,ctx.message.author.name,time.ctime()).action()
 
     # Leave 
     @commands.command(name="leave",aliases=["esc"])
     async def leave(self,ctx:commands.Context):
         self.queue[ctx.guild.id] = []
         await ctx.guild.voice_client.disconnect()
+        logger.Log("LEAVE",ctx.guild,ctx.message.author.name,time.ctime()).action()
 
 async def setup(bot):
     await bot.add_cog(Music(bot))

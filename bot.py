@@ -39,7 +39,8 @@ async def on_ready():
     os.system("cls||clear")
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name='$help'))
     for guild in bot.guilds:
-        print(guild.name)
+        print(f"{logger.Colors.YELLOW}{guild.name}{logger.Colors.GREY}")
+    print("\n")
 
 # Help command
 @bot.command(name="help")
