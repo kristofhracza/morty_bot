@@ -7,6 +7,8 @@ A fun discord bot
     - Plays music from url / keyword `$play [url / keyword]`
 - skip / stop
     - Skips current song
+- leave / esc
+    - Leaves vc
 - queue / q
     - Shows music queue
 

@@ -19,6 +19,7 @@ Q[i] = [[player,url]]
 
 """
 # Libs
+from ast import alias
 import helpers.str as str_conv
 from helpers.loader import *
 # Additional libs
@@ -81,6 +82,7 @@ class Music(commands.Cog):
                 embed = discord.Embed(title="Added to queue", description=player.title, color=discord.Color.from_rgb(*EMBED_COLORS["blue"]))
                 await(ctx.send(embed=embed))
 
+    # Queue command
     @commands.command(name="queue", aliases=["q"])
     async def display_queue(self,ctx: commands.Context):
         if len(self.queue[ctx.guild.id]) > 0:
@@ -96,8 +98,14 @@ class Music(commands.Cog):
     @commands.command(name="skip", aliases=["stop"])
     async def skip(self,ctx: commands.Context):
         logger.Log("SKIP",ctx.guild,ctx.message.author.name,time.ctime()).action()
-        await ctx.voice_client.stop()
+        await ctx.guild.voice_client.stop()
         asyncio.run_coroutine_threadsafe(self.queue_handle(ctx.guild.id), self.bot.loop)
+
+    # Leave 
+    @commands.command(name="leave",aliases=["esc"])
+    async def leave(self,ctx:commands.Context):
+        self.queue[ctx.guild.id] = []
+        await ctx.guild.voice_client.disconnect()
 
 async def setup(bot):
     await bot.add_cog(Music(bot))
