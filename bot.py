@@ -38,6 +38,7 @@ async def main():
 async def on_ready():
     os.system("cls||clear")
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name='$help'))
+    print(f"{logger.Colors.CYAN}Start time:\t{time.ctime()}\n{logger.Colors.GREY}")
     for guild in bot.guilds:
         print(f"{logger.Colors.YELLOW}{guild.name}{logger.Colors.GREY}")
     print("\n")
