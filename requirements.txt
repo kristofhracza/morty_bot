@@ -4,3 +4,4 @@ PyNaCl
 youtube-dl
 asyncio
 beautifulsoup4
+requests

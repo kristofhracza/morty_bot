@@ -86,6 +86,16 @@ class Music(commands.Cog):
                 embed = discord.Embed(title="Added to queue", description=player.title, color=discord.Color.from_rgb(*EMBED_COLORS["blue"]))
                 await(ctx.send(embed=embed))
 
+    # Load list command
+    @commands.command(name="loadlist", aliases=["ll"])
+    async def play_list(self, ctx: commands.Context, *args):
+        logger.Log("LIST",ctx.guild,ctx.message.author.name,time.ctime()).action()
+        data = await yt.YTDLSource.from_list(args[0],self.queue,ctx.guild.id,loop=self.bot.loop,stream=True)
+        embed = discord.Embed(title=f"Tracks from *{str_conv.conv(data['title'])}* are queued",color=discord.Color.from_rgb(*EMBED_COLORS["blue"]))
+        nl = "\n"
+        embed.add_field(name="Current queue:",value=f"{f' {nl} '.join(str_conv.conv(str(s[0].title)) for s in self.queue[ctx.guild.id])}",inline=False)
+        await(ctx.send(embed=embed))
+
     # Queue command
     @commands.command(name="queue", aliases=["q"])
     async def display_queue(self,ctx: commands.Context):
