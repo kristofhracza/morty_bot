@@ -1,27 +1,37 @@
 # Morty
-A fun discord bot
+Fun discord bot
 
 # Usage:
+![help](./img/help.PNG)
 ### Music:
 - play
-    - Plays music from url / keyword `$play [url / keyword]`
+<br>Plays music from url / keyword `$play [url / keyword]`
 - skip / stop
-    - Skips current song
+<br>Skips current song
 - leave / esc
-    - Leaves vc
+<br>Leaves vc
 - queue / q
-    - Shows music queue
+<br>Shows music queue
+- loadlist / ll
+<br>Loads playlist to queue
 
 ### Fun:
 - nsfw
-    - Embeds an nsfw GIF
+<br>Embeds an nsfw GIF
 - pee-pee
-    - Shows size
+<br>Shows size
 - meme
-    - Gets memes from  https://www.reddit.com/r/memes/
+<br>Gets memes from  https://www.reddit.com/r/memes/
 
 # Libs:
 `pip install -r requirements.txt`
+
+# Environment:
+Config uses `.env` file:    
+```
+TOKEN=MYTOKEN
+FFMPEG_PATH=./ffmpeg/bin/ffmpeg.exe
+```
 
 # Execute:
 - `py bot.py`
