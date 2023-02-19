@@ -52,7 +52,7 @@ class Music(commands.Cog):
 
 
     # Playing music
-    @commands.command(name="play")
+    @commands.command(name="play",aliases=["PLAY"])
     async def play(self,ctx: commands.Context,*args,**kwargs):
         if kwargs and kwargs["queue_handle"] == True:
             logger.Log("PLAY QUEUE",ctx.guild,ctx.message.author.name,time.ctime()).action()
@@ -87,7 +87,7 @@ class Music(commands.Cog):
                 await(ctx.send(embed=embed))
 
     # Load list command
-    @commands.command(name="loadlist", aliases=["ll"])
+    @commands.command(name="loadlist", aliases=["ll","LOADLIST","LL"])
     async def play_list(self, ctx: commands.Context, *args):
         logger.Log("LIST",ctx.guild,ctx.message.author.name,time.ctime()).action()
         data = await yt.YTDLSource.from_list(args[0],self.queue,ctx.guild.id,loop=self.bot.loop,stream=True)
@@ -97,7 +97,7 @@ class Music(commands.Cog):
         await(ctx.send(embed=embed))
 
     # Queue command
-    @commands.command(name="queue", aliases=["q"])
+    @commands.command(name="queue", aliases=["q","QUEUE","Q"])
     async def display_queue(self,ctx: commands.Context):
         if len(self.queue[ctx.guild.id]) > 0:
             embed = discord.Embed(title="Tracks in the queue",color=discord.Color.from_rgb(*EMBED_COLORS["blue"]))
@@ -110,7 +110,7 @@ class Music(commands.Cog):
         logger.Log("QUEUE",ctx.guild,ctx.message.author.name,time.ctime()).action()
 
     # Stop / Skip audio
-    @commands.command(name="skip", aliases=["stop"])
+    @commands.command(name="skip", aliases=["stop","SKIP","STOP"])
     async def skip(self,ctx: commands.Context):
         logger.Log("SKIP",ctx.guild,ctx.message.author.name,time.ctime()).action()
         await ctx.guild.voice_client.stop()
@@ -118,7 +118,7 @@ class Music(commands.Cog):
         logger.Log("SKIP",ctx.guild,ctx.message.author.name,time.ctime()).action()
 
     # Leave 
-    @commands.command(name="leave",aliases=["esc"])
+    @commands.command(name="leave",aliases=["esc","LEAVE","ESC"])
     async def leave(self,ctx:commands.Context):
         self.queue[ctx.guild.id] = []
         await ctx.guild.voice_client.disconnect()
