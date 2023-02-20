@@ -19,7 +19,7 @@ Q[i] = [[player,url]]
 
 """
 # Libs
-from ast import alias
+import random
 import helpers.str as str_conv
 from helpers.loader import *
 # Additional libs
@@ -108,6 +108,12 @@ class Music(commands.Cog):
             embed = discord.Embed(title="There's nothing in the queue",color=discord.Color.from_rgb(*EMBED_COLORS["red"]))
             await(ctx.send(embed=embed))
         logger.Log("QUEUE",ctx.guild,ctx.message.author.name,time.ctime()).action()
+
+    # Shuffle queue
+    @commands.command(name="shuffle", aliases=["SHUFFLE"])
+    async def shuffle_list(self,ctx: commands.Context):
+        random.shuffle(self.queue[ctx.guild.id])
+        logger.Log("SHUFFLE",ctx.guild,ctx.message.author.name,time.ctime()).action()
 
     # Stop / Skip audio
     @commands.command(name="skip", aliases=["stop","SKIP","STOP"])

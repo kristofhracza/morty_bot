@@ -14,6 +14,8 @@ Fun discord bot
 <br>Shows music queue
 - loadlist / ll
 <br>Loads playlist to queue
+- shuffle
+<br>Randomises the queue
 
 ### Fun:
 - nsfw
