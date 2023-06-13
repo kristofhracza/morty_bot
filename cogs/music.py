@@ -93,21 +93,21 @@ class Music(commands.Cog):
         data = await yt.YTDLSource.from_list(args[0],self.queue,ctx.guild.id,loop=self.bot.loop,stream=True)
         embed = discord.Embed(title=f"Tracks from *{str_conv.conv(data['title'])}* are queued",color=discord.Color.from_rgb(*EMBED_COLORS["blue"]))
         nl = "\n"
-        embed.add_field(name="Current queue:",value=f"{f' {nl} '.join(str_conv.conv(str(s[0].title)) for s in self.queue[ctx.guild.id])}",inline=False)
+        embed.add_field(name="Current queue:",value=f"{nl}{nl.join(str(str_conv.conv(s[0].title)) for s in self.queue[ctx.guild.id])}",inline=False)
         await(ctx.send(embed=embed))
 
     # Queue command
     @commands.command(name="queue", aliases=["q","QUEUE","Q"])
     async def display_queue(self,ctx: commands.Context):
+        logger.Log("QUEUE",ctx.guild,ctx.message.author.name,time.ctime()).action()
         if len(self.queue[ctx.guild.id]) > 0:
             embed = discord.Embed(title="Tracks in the queue",color=discord.Color.from_rgb(*EMBED_COLORS["blue"]))
             nl = "\n"
-            embed.add_field(name="\u200b",value=f"{f' {nl} '.join(str_conv.conv(str(s[0].title)) for s in self.queue[ctx.guild.id])}",inline=False)
+            embed.add_field(name="\u200b",value=f"{nl}{nl.join(str(str_conv.conv(s[0].title)) for s in self.queue[ctx.guild.id])}",inline=False)
             await(ctx.send(embed=embed))
         else:
             embed = discord.Embed(title="There's nothing in the queue",color=discord.Color.from_rgb(*EMBED_COLORS["red"]))
             await(ctx.send(embed=embed))
-        logger.Log("QUEUE",ctx.guild,ctx.message.author.name,time.ctime()).action()
 
     # Shuffle queue
     @commands.command(name="shuffle", aliases=["SHUFFLE"])
