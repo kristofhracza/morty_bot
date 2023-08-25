@@ -1,7 +1,7 @@
 discord
 python-dotenv
 PyNaCl
-youtube-dl
+yt-dlp
 asyncio
 beautifulsoup4
 requests
