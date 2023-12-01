@@ -27,12 +27,12 @@ class Log():
         self.cmd = f"{Colors.GREEN}{self.cmd}{Colors.GREY} "
         self.user = f"{Colors.CYAN}{self.user}{Colors.GREY}"
         self.guild = f"{Colors.BLUE}{self.guild}{Colors.GREY}"
-        print(f"{self.time} | {self.cmd} | {self.user} | {self.guild}")
+        print(f"{self.time}\t{self.cmd}\t{self.user}\t{self.guild}")
 
     # Errors
     def error(self):
-        print(f"{Colors.RED}{self.time} | {self.cmd} | {self.user} | {self.guild}{Colors.GREY}")
+        print(f"{Colors.RED}{self.time}\t{self.cmd}\t{self.user}\t{self.guild}{Colors.GREY}")
 
     # Errors with messages
     def error_message(self,msg):
-        print(f"\n{Colors.RED}{self.time} | {self.cmd} | {self.user} | {self.guild} | {msg}\n{Colors.GREY}")
+        print(f"\n{Colors.RED}{self.time}\t{self.cmd}\t{self.user}\t{self.guild}\t{msg}\n{Colors.GREY}")
