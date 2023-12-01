@@ -1,14 +1,12 @@
 # Morty
-Fun discord bot
+Discord bot
 
-# Usage:
-![help](./img/help.PNG)
-
-# Libs:
+## Usage:
+### Dependencies
 `pip install -r requirements.txt`
 
-# Environment:
-Config uses `.env` file:    
+### Environment:
+Config uses `.env` file, follow the given format:    
 ```
 TOKEN=MYTOKEN
 FFMPEG_PATH=./ffmpeg/bin/ffmpeg.exe
