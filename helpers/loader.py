@@ -1,19 +1,8 @@
-"""
-
-File to include all the most needed libs + any other variable used across the app
-
-Colour rules for embeds:
-    - Info:     Blue
-    - Warning:  Yellow
-    - Error:    Red
-"""
 import random,discord,time,asyncio
 from discord.ext import commands
 
 import helpers.logger as logger
-from helpers.embed import make_embed
 
-# Embed colours
 EMBED_COLORS = {
     "magenta":[204,51,139],
     "blue":[99,203,251],
@@ -22,3 +11,16 @@ EMBED_COLORS = {
     "yellow":[255,255,0],
     "greenyellow":[173,255,47]
 }
+
+
+# MD file charc replace
+FORBIDDEN_CHARS = ["*","`","#","_",">"]
+
+def md_conv(str):
+    nstr = ""
+    for c in str:
+        if c in FORBIDDEN_CHARS:
+            nstr += "@"
+        else:
+            nstr += c
+    return nstr

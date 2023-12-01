@@ -1,17 +1,13 @@
-# Script to take audio from yt url (ported to yt-dlp for better compatibility)
-# https://github.com/Rapptz/discord.py/blob/45d498c1b76deaf3b394d17ccf56112fa691d160/examples/basic_voice.py
-
 import os
 import asyncio
 import discord
 import yt_dlp
 from dotenv import load_dotenv
 
-# Load env variables
+# Setup
 load_dotenv()
 FFMPEG = os.getenv('FFMPEG_PATH')
 
-# Set up options for yt-dlp
 ytdlp_options = {
     'format': 'bestaudio/best',
     'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
@@ -26,7 +22,6 @@ ytdlp_options = {
     'source_address': '0.0.0.0'
 }
 
-# Fix for music stoppage:
 # https://stackoverflow.com/questions/66070749/how-to-fix-discord-music-bot-that-stops-playing-before-the-song-is-actually-over
 ffmpeg_options = {
     'options': '-vn',
@@ -35,6 +30,8 @@ ffmpeg_options = {
 
 yt_dlp_player = yt_dlp.YoutubeDL(ytdlp_options)
 
+
+# Source handling class
 class YTDLSource(discord.PCMVolumeTransformer):
     def __init__(self, source, *, data, volume=0.5):
         super().__init__(source, volume)
@@ -43,25 +40,27 @@ class YTDLSource(discord.PCMVolumeTransformer):
         self.url = data.get('url')
         self.thumbnail = data.get("thumbnail")
 
+    # Load single song
     @classmethod
     async def from_url(cls, url, *, loop=None, stream=False):
         loop = loop or asyncio.get_event_loop()
 
-        # URL check to decide to search for url or keywords
+        # Keyword / URL search
         if "https://www.youtube.com/watch" not in url:
             data = await loop.run_in_executor(None, lambda: yt_dlp_player.extract_info(f"ytsearch:{url}", download=not stream))
         else:
             data = await loop.run_in_executor(None, lambda: yt_dlp_player.extract_info(url, download=not stream))
 
         if 'entries' in data:
-            # take first item from a playlist
             data = data['entries'][0]
 
         filename = data['url'] if stream else yt_dlp_player.prepare_filename(data)
         return cls(discord.FFmpegPCMAudio(filename, **ffmpeg_options, executable=FFMPEG,), data=data)
 
+    # Load song from list
     @classmethod
     async def from_list(cls,url,queue,id,loop=None,stream=False):
+        # Get list
         data = await loop.run_in_executor(None, lambda: yt_dlp_player.extract_info(url, download=not stream))
         loop = loop or asyncio.get_event_loop()
         old_data = data
