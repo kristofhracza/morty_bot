@@ -1,13 +1,5 @@
-"""
-
-Main file handling methods from other files
-and audio related options
-
-"""
-
-# Libs
 from helpers.loader import *
-# Additional libs
+
 import os
 from dotenv import load_dotenv
 
@@ -22,7 +14,6 @@ bot.remove_command("help")
 # Deployment
 async def load_extensions():
     await bot.load_extension("cogs.music")
-    await bot.load_extension("cogs.fun")
 
 async def main():
     # Load env variables
@@ -48,7 +39,6 @@ async def on_ready():
 async def help(ctx):
     embed = discord.Embed(title="Help menu",description="Command prefix: *$*",color=discord.Color.from_rgb(0,188,255))
     embed.add_field(name="Music",value="""```\rplay\nskip\nleave / esc\nqueue / q\nloadlist / ll\nshuffle\r```""")
-    embed.add_field(name="Fun",value="""```\rnsfw\npee-pee\nmeme\r```""")
     await(ctx.send(embed=embed))
 
 if __name__ == "__main__":

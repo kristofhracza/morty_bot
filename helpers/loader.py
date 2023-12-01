@@ -6,15 +6,10 @@ Colour rules for embeds:
     - Info:     Blue
     - Warning:  Yellow
     - Error:    Red
-    - NSFW:     Magenta
-    - FUN:      Green
-
 """
-# Libs
 import random,discord,time,asyncio
-# Discord
 from discord.ext import commands
-# Helpers
+
 import helpers.logger as logger
 from helpers.embed import make_embed
 
