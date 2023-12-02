@@ -33,12 +33,11 @@ yt_dlp_player = yt_dlp.YoutubeDL(ytdlp_options)
 
 # Source handling class
 class YTDLSource(discord.PCMVolumeTransformer):
-    def __init__(self, source, *, data, volume=0.5):
+    def __init__(self, source, *, data, volume=0.3):
         super().__init__(source, volume)
         self.data = data
         self.title = data.get('title')
         self.url = data.get('url')
-        self.thumbnail = data.get("thumbnail")
 
     # Load single song
     @classmethod
