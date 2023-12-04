@@ -12,9 +12,8 @@ ytdlp_options = {
     'format': 'bestaudio/best',
     'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
     'restrictfilenames': True,
-    'noplaylist': True,
     'nocheckcertificate': True,
-    'ignoreerrors': False,
+    'ignoreerrors': True,
     'logtostderr': False,
     'quiet': True,
     'no_warnings': True,
@@ -60,15 +59,15 @@ class YTDLSource(discord.PCMVolumeTransformer):
     @classmethod
     async def from_list(cls,url,queue,id,loop=None,stream=False):
         # Get list
-        data = await loop.run_in_executor(None, lambda: yt_dlp_player.extract_info(url, download=not stream))
         loop = loop or asyncio.get_event_loop()
+        data = await loop.run_in_executor(None, lambda: yt_dlp_player.extract_info(url, download=not stream))
         old_data = data
-        data = data["entries"]
 
         # Load tracks into server queue
-        for track in data:
-            filename = track["webpage_url"] if stream else yt_dlp_player.prepare_filename(track)
-            player = cls(discord.FFmpegPCMAudio(filename, **ffmpeg_options, executable=FFMPEG,), data=track)
-            queue[id].append([player, track["webpage_url"]])
+        for track in data["entries"]:
+            if track != None:
+                filename = track["webpage_url"] if stream else yt_dlp_player.prepare_filename(track)
+                player = cls(discord.FFmpegPCMAudio(filename, **ffmpeg_options, executable=FFMPEG,), data=track)
+                queue[id].append([player, track["webpage_url"]])
 
         return old_data
