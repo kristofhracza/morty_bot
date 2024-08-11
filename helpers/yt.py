@@ -2,11 +2,15 @@ import os
 import asyncio
 import discord
 import yt_dlp
+import platform
 from dotenv import load_dotenv
 
-# Setup
+# Load env variables
 load_dotenv()
-FFMPEG = os.getenv('FFMPEG_PATH')
+if platform.system() == "Linux":
+    FFMPEG = "/usr/bin/ffmpeg"
+else:
+    FFMPEG = os.getenv('FFMPEG_PATH')
 
 ytdlp_options = {
     'format': 'bestaudio/best',
