@@ -16,28 +16,27 @@ async def load_extensions():
     await bot.load_extension("cogs.music")
 
 async def main():
-    # Load env variables
     load_dotenv()
     TOKEN = os.getenv('TOKEN')
-    # Load cogs
     async with bot:
         await load_extensions()
         await bot.start(TOKEN)
 
-# When going online
+# Startup
 @bot.event
 async def on_ready():
     os.system("cls||clear")
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name='$help'))
-    print(f"{logger.Colors.CYAN}Start time:\t{time.ctime()}\n{logger.Colors.GREY}")
+    print(f"Start time: {time.ctime()}\n")
     for guild in bot.guilds:
-        print(f"{logger.Colors.YELLOW}{guild.name}{logger.Colors.GREY}")
+        print(f"{guild.name}")
     print("\n")
+
 
 # Help command
 @bot.command(name="help")
 async def help(ctx):
-    embed = discord.Embed(title="Help menu",description="Command prefix: *$*",color=discord.Color.from_rgb(0,188,255))
+    embed = discord.Embed(title="Help Menu",description="Command prefix: *$*",color=discord.Color.from_rgb(0,188,255))
     embed.add_field(name="Music",value="""```\rplay\nskip\nleave / esc\nqueue / q\nloadlist / ll\nshuffle\r```""")
     await(ctx.send(embed=embed))
 

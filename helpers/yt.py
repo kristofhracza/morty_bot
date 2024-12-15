@@ -10,7 +10,7 @@ load_dotenv()
 if platform.system() == "Linux":
     FFMPEG = "/usr/bin/ffmpeg"
 else:
-    FFMPEG = os.getenv('FFMPEG_PATH')
+    FFMPEG = os.getenv("FFMPEG_PATH")
 
 ytdlp_options = {
     'format': 'bestaudio/best',
@@ -27,7 +27,7 @@ ytdlp_options = {
 
 # https://stackoverflow.com/questions/66070749/how-to-fix-discord-music-bot-that-stops-playing-before-the-song-is-actually-over
 ffmpeg_options = {
-    'options': '-vn',
+    "options": "-vn",
     "before_options": "-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5"
 }
 
@@ -42,7 +42,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         self.title = data.get('title')
         self.url = data.get('url')
 
-    # Load single song
+    """ Loads single song """
     @classmethod
     async def from_url(cls, url, *, loop=None, stream=False):
         loop = loop or asyncio.get_event_loop()
@@ -59,7 +59,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         filename = data['url'] if stream else yt_dlp_player.prepare_filename(data)
         return cls(discord.FFmpegPCMAudio(filename, **ffmpeg_options, executable=FFMPEG,), data=data)
 
-    # Load song from list
+    """ Loads playlist """
     @classmethod
     async def from_list(cls,url,queue,id,loop=None,stream=False):
         # Get list
@@ -67,7 +67,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         data = await loop.run_in_executor(None, lambda: yt_dlp_player.extract_info(url, download=not stream))
         old_data = data
 
-        # Load tracks into server queue
+        # Tracks into server queue
         for track in data["entries"]:
             if track != None:
                 filename = track["webpage_url"] if stream else yt_dlp_player.prepare_filename(track)

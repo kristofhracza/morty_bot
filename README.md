@@ -1,11 +1,18 @@
 # Morty
-Discord bot
+Custom Discord bot
 
-## Usage:
-### Dependencies
-`pip install -r requirements.txt`
+# Features:
+- Play any audio from YouTube
+- Playlist loading and handling
+- Multi server deployment
 
-### Environment:
+# Usage:
+## Dependencies
+Install libraries with: `pip install -r requirements.txt`
+
+*If you're on **Linux** make sure to have **ffmpeg** on your system. For **Windows**, the executable is provided.*
+
+## Environment:
 Config uses `.env` file, follow the given format:    
 ```
 TOKEN=MYTOKEN

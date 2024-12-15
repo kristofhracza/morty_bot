@@ -3,5 +3,3 @@ python-dotenv
 PyNaCl
 yt-dlp
 asyncio
-beautifulsoup4
-requests
