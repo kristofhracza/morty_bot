@@ -32,18 +32,12 @@ async def help(ctx):
     """Sends embed for help command"""
     embed = discord.Embed(title="Help Menu", description="Command prefix: *$*", color=discord.Color.from_rgb(0,188,255))
     embed.add_field(
-        name="Music", 
-        value=(
-        "```\r"
-        "play\n"
-        "skip\n"
-        "leave / esc\n"
-        "queue / q\n"
-        "loadlist / ll\n"
-        "shuffle\n"
-        "\r```"
-        )
+        name="Music Commands", 
+        value=("""
+            `play` `loadlist` `skip` `leave` `shuffle` `queue`
+        """)
     )
+
     await(ctx.send(embed=embed))
 
 
