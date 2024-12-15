@@ -4,7 +4,9 @@ Custom Discord bot
 # Features:
 - Play any audio from YouTube
 - Playlist loading and handling
+- Queue visualisation and shuffling
 - Multi server deployment
+- Fun functions
 
 # Usage:
 ## Dependencies

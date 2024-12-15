@@ -13,6 +13,7 @@ bot.remove_command("help")
 async def load_extensions():
     """Loads all cogs"""
     await bot.load_extension("cogs.music")
+    await bot.load_extension("cogs.fun")
 
 
 @bot.event
@@ -35,7 +36,15 @@ async def help(ctx):
         name="Music Commands", 
         value=("""
             `play` `loadlist` `skip` `leave` `shuffle` `queue`
-        """)
+        """),
+        inline=False
+    )
+    embed.add_field(
+        name="\nFun Commands", 
+        value=("""
+            `pp` `iq`
+        """),
+        inline=False
     )
 
     await(ctx.send(embed=embed))
