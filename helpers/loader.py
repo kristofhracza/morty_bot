@@ -1,8 +1,12 @@
-import random,discord,time,asyncio
-from discord.ext import commands
+import random
+import discord
+import time
+import asyncio
 
+from discord.ext import commands
 import helpers.logger as logger
 
+# Color codes for embeds
 EMBED_COLORS = {
     "magenta":[204,51,139],
     "blue":[99,203,251],
@@ -13,9 +17,8 @@ EMBED_COLORS = {
 }
 
 
-# MD file charc replace
+# MD file character replacement
 FORBIDDEN_CHARS = ["*","`","#","_",">"]
-
 def md_conv(str):
     nstr = ""
     for c in str:
